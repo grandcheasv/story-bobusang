@@ -24,7 +24,7 @@ export default function StoryIncidentScreen({ mission }: { mission: RestorableMi
         <CheonggwangScene
           dialogue={dialogues[dialogueIndex]}
           actions={
-            <div className="flex flex-col-reverse items-start gap-1">
+            <div className="cheonggwang-button-row">
               <button type="button" onClick={() => setDialogueIndex((current) => current === 0 ? null : (current ?? 1) - 1)} className={previousButtonClassName}>이전</button>
               {dialogueIndex === dialogues.length - 1 ? (
                 <button type="button" onClick={() => router.push(`/mission/${mission.id}/play`)} className={primaryButtonClassName}>정답 입력하기</button>

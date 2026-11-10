@@ -47,17 +47,17 @@ export default function Home() {
         : "여정 시작하기";
 
   return (
-    <main className="story-surface relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col border-x border-[#d8c5a4]/70 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1.5rem,env(safe-area-inset-top))] text-[#4a3022] shadow-[0_0_50px_rgba(74,48,34,0.13)] sm:px-9">
-      <section className="flex flex-1 flex-col items-center justify-center text-center">
-        <h1 className="w-full max-w-[390px]">
-          <Image src="/images/ui/title-logo.png" width={1774} height={887} alt="이야기 보부상 광천편" priority className="h-auto w-full object-contain" />
-        </h1>
-        <p className="-mt-2 max-w-[18rem] text-base leading-7 text-[#5c402b]">
-          이야기를 찾고, 지역을 기록하는 여행
-        </p>
+    <main className="home-surface relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col overflow-hidden border-x border-[#d8c5a4]/70 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1.5rem,env(safe-area-inset-top))] text-[#4a3022] shadow-[0_0_50px_rgba(74,48,34,0.13)] sm:px-9">
+      <Image src="/images/ui/KakaoTalk_20261110_104850428_02.png" alt="" fill preload sizes="(max-width: 440px) 100vw, 440px" className="object-cover object-center" />
+      <section className="relative z-10 flex flex-1 flex-col items-center justify-center pb-[24dvh] text-center">
+        <div className="home-title-enter flex w-full flex-col items-center">
+          <h1 className="flex w-full justify-center">
+            <Image src="/images/ui/title-logo.png?v=20261110" width={1727} height={1027} alt="이야기 보부상 광천편 임무 장부" unoptimized loading="eager" className="home-title-image object-contain" />
+          </h1>
+        </div>
       </section>
 
-      <div className="w-full">
+      <div className="home-action-enter relative z-10 w-full">
         {journeyState === null ? (
           <div aria-live="polite" className="story-button-primary flex min-h-20 w-full items-center justify-center px-6 text-lg font-semibold">
             여정을 확인하고 있습니다.

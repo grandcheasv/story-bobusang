@@ -74,7 +74,7 @@ export default function BriefingScreen() {
             </div>
           ) : undefined}
           actions={
-            <div className="flex flex-col-reverse items-start gap-1">
+            <div className="cheonggwang-button-row">
               {step > 0 && (
                 <button type="button" onClick={() => setStep((current) => Math.max(0, current - 1))}
                   className={previousButtonClassName}>이전</button>

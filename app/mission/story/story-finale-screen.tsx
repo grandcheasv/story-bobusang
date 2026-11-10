@@ -108,7 +108,7 @@ export default function StoryFinaleScreen() {
         <CheonggwangScene
           dialogue={dialogues[dialogueIndex]}
           actions={
-            <div className="flex flex-col-reverse items-start gap-1">
+            <div className="cheonggwang-button-row">
               {stage === "closing" && (
                 <button type="button" onClick={() => dialogueIndex === 0 ? setStage("map") : setDialogueIndex((current) => current - 1)} className={previousButtonClassName}>이전</button>
               )}

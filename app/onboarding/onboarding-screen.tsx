@@ -249,7 +249,7 @@ export default function OnboardingScreen() {
   ) : step.kind === "issuing" ? (
     issuance.progress === 100 ? <Link href="/permit" className={primaryButtonClassName}>내 험표 확인하기</Link> : null
   ) : nextLabel ? (
-    <div className="flex flex-col-reverse items-start gap-1">
+    <div className={prologue ? "flex flex-col-reverse items-start gap-1" : "cheonggwang-button-row"}>
       {history.length > 0 && previousButton}
       <button type="button" onClick={goNext} className={primaryButtonClassName + " w-full"}>{nextLabel}</button>
     </div>

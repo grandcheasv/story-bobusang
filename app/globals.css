@@ -33,6 +33,45 @@ body {
   background-size: cover;
 }
 
+.home-surface {
+  background-color: #e7decb;
+}
+
+.home-title-image {
+  width: min(80vw, 340px);
+  max-width: 100%;
+  height: auto;
+}
+
+.home-title-enter {
+  opacity: 0;
+  animation: home-title-reveal 700ms ease-out 700ms both;
+}
+
+.home-action-enter {
+  opacity: 0;
+  animation: home-action-reveal 650ms ease-out 1150ms both;
+}
+
+@keyframes home-title-reveal {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes home-action-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-title-enter,
+  .home-action-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .story-button-primary,
 .story-button-secondary {
   position: relative;
@@ -104,6 +143,16 @@ body {
   background: rgb(240 224 193 / 80%);
   box-shadow: inset 0 0 0 7px rgb(255 248 231 / 55%), 0 9px 24px rgb(74 48 34 / 10%);
   padding-bottom: 12px;
+}
+
+.cheonggwang-portrait-image {
+  object-fit: cover;
+  object-position: center top;
+  transform: scale(1.12);
+}
+
+.cheonggwang-portrait + .cheonggwang-card {
+  margin-top: 4px;
 }
 
 .cheonggwang-portrait-head {
@@ -185,6 +234,29 @@ body {
 .cheonggwang-actions {
   margin-top: auto;
   padding-top: 12px;
+}
+
+.cheonggwang-actions > .story-button-secondary {
+  width: min(30%, 120px);
+}
+
+.cheonggwang-button-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 5%;
+}
+
+.cheonggwang-button-row > .story-button-secondary {
+  flex: 0 0 30%;
+  width: auto;
+  min-width: 0;
+}
+
+.cheonggwang-button-row > .story-button-primary {
+  flex: 1 1 65%;
+  width: auto;
+  min-width: 0;
 }
 
 .permit-card {

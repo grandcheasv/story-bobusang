@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import type { ReactNode } from "react";
 
 export type CheonggwangCardKind = "general" | "choices" | "name-input" | "correct" | "wrong";
@@ -31,6 +34,32 @@ type CheonggwangSceneProps = {
   actions?: ReactNode;
 };
 
+function CheonggwangPortrait() {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  return (
+    <div role="img" aria-label="천광의 초상" className="cheonggwang-portrait">
+      {imageFailed ? (
+        <>
+          <span aria-hidden="true" className="cheonggwang-portrait-head" />
+          <span aria-hidden="true" className="cheonggwang-portrait-body" />
+          <span className="cheonggwang-portrait-caption">천광 이미지 자리</span>
+        </>
+      ) : (
+        <Image
+          src="/images/characters/cheongwang.png"
+          alt=""
+          fill
+          sizes="(max-width: 440px) 40vw, 176px"
+          loading="eager"
+          className="cheonggwang-portrait-image"
+          onError={() => setImageFailed(true)}
+        />
+      )}
+    </div>
+  );
+}
+
 export default function CheonggwangScene({
   dialogue,
   kind = "general",
@@ -45,12 +74,7 @@ export default function CheonggwangScene({
         <Image src="/images/ui/title-logo.png" alt="이야기 보부상" width={1774} height={887} priority className="h-auto w-full" />
       </header>
 
-      {/* 실제 천광 이미지가 준비되면 이 영역을 비율을 유지하는 Image로 교체합니다. */}
-      <div role="img" aria-label="천광 이미지가 들어갈 자리" className="cheonggwang-portrait">
-        <span aria-hidden="true" className="cheonggwang-portrait-head" />
-        <span aria-hidden="true" className="cheonggwang-portrait-body" />
-        <span className="cheonggwang-portrait-caption">천광 이미지 자리</span>
-      </div>
+      <CheonggwangPortrait />
 
       <CheonggwangCard dialogue={dialogue} kind={kind}>{cardContent}</CheonggwangCard>
 

@@ -36,7 +36,7 @@ export default function StoryNextScreen({ mission }: { mission: RestorableMissio
         <CheonggwangScene
           dialogue={dialogues[index]}
           actions={
-            <div className="flex flex-col-reverse items-start gap-1">
+            <div className="cheonggwang-button-row">
               {index > 0 && <button type="button" onClick={() => setIndex((current) => current - 1)} className={previousButtonClassName}>이전</button>}
               {index === dialogues.length - 1 ? (
                 <Link href={`/mission/${mission.nextMissionId}`} className={primaryButtonClassName}>{mission.nextStoryButtonLabel}</Link>
