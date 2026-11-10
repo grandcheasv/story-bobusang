@@ -5,7 +5,6 @@ export type Mission = {
   location: string;
   shortDescription: string;
   mapUrl?: string;
-  incidentVideoUrl?: string;
   guideMessage?: string;
   storyLabel?: string;
   incidentDialogues?: readonly string[];
@@ -31,7 +30,7 @@ export type PlayableMission = Mission & {
 };
 
 export type RestorableMission = PlayableMission & {
-  memoryVideoUrl?: string;
+  videoUrl: string;
   recordPrompt?: string;
   memoryRecordFactLabel?: string;
   memoryRecordFactValue?: string;
@@ -55,7 +54,6 @@ const mokju: RestorableMission = {
   guideMessage:
     "첫 번째 기억의 흔적은\n시장 안에 남아 있어.\n\n오래된 나무 기둥을 찾으면\n다시 이야기하지.",
   storyLabel: "첫 번째 이야기",
-  incidentVideoUrl: "",
   incidentDialogues: [
     "이런…\n또 망각이 시작된 모양이야.",
     "저 사람은 오랫동안\n광천시장에 남아 있는 것들을\n기록해온 사람이야.\n\n목주가 어디 있는지도,\n왜 기록했는지도 기억하고 있어.\n\n그런데 시장의 시간이\n언제 시작됐는지만 잊어버렸군.",
@@ -76,7 +74,7 @@ const mokju: RestorableMission = {
     "목주의 뒤쪽을\n자세히 살펴보게.\n\n작은 번호찰 하나가\n붙어 있을 거야.",
   successMessage: "시간의 기억을 복원했습니다.",
   memoryAvailable: true,
-  memoryVideoUrl: "",
+  videoUrl: "https://youtu.be/H_E2UuegJKw",
   memoryTitle: "시간의 기록",
   memoryRecordFactLabel: "광천시장 시작",
   memoryRecordFactValue: "1926년",
@@ -100,7 +98,6 @@ const gwangcheonStation: RestorableMission = {
   shortDescription: "광천역으로 이동하세요.",
   guideMessage: "이번 기억의 흔적은\n광천역에 남아 있어.\n\n역에 도착하면\n다시 이야기하지.",
   storyLabel: "두 번째 이야기",
-  incidentVideoUrl: "",
   incidentDialogues: [
     "또 시작됐군.\n\n이번에는 사람과 장소를 이어주던\n기억이 끊어진 모양이야.",
     "저 사람은 왜 역에 왔는지도,\n기차를 타야 한다는 것도 기억하고 있어.\n\n그런데 딱 하나.\n\n도착해야 할 곳만\n기억하지 못하고 있군.",
@@ -119,7 +116,7 @@ const gwangcheonStation: RestorableMission = {
   additionalHint: "광천역을 출발점으로 생각하고\n미션북의 철도 해독표를\n다시 살펴보게.",
   successMessage: "길의 기억을 복원했습니다.",
   memoryAvailable: true,
-  memoryVideoUrl: "",
+  videoUrl: "https://youtu.be/Wu13MuTaea0",
   memoryTitle: "길의 기록",
   memoryRecordFactLabel: "광천을 이어온 철길",
   memoryRecordFactValue: "장항선",
@@ -142,7 +139,6 @@ const tunnel: RestorableMission = {
   shortDescription: "광천의 토굴로 이동하세요.",
   guideMessage: "이번 기억의 흔적은\n토굴에 남아 있어.\n\n그곳에 도착하면\n다시 이야기하지.",
   storyLabel: "세 번째 이야기",
-  incidentVideoUrl: "",
   incidentDialogues: [
     "이번에는 장소를 잊은 게 아니군.\n\n토굴도 기억하고,\n새우젓을 이곳에 가져와야 한다는 것도\n기억하고 있어.",
     "그런데 그 둘을 이어주던\n이유가 사라졌어.\n\n왜 하필 이 공간이어야 했는지\n기억하지 못하는 모양이야.",
@@ -163,7 +159,7 @@ const tunnel: RestorableMission = {
   additionalHint: "단순히 오래 보관하는 것과\n맛이 익어가는 것은 다른 일이야.\n\n미션북에서 새우젓의 변화와 관련된\n기록을 다시 찾아보게.",
   successMessage: "숙성의 기억을 복원했습니다.",
   memoryAvailable: true,
-  memoryVideoUrl: "",
+  videoUrl: "https://youtu.be/jUiBGkeflQM",
   memoryTitle: "숙성의 기록",
   memoryRecordFactLabel: "광천 새우젓을 익혀온 공간",
   memoryRecordFactValue: "토굴",
@@ -186,7 +182,6 @@ const exhibition: RestorableMission = {
   shortDescription: "토굴새우젓홍보전시관으로 이동하세요.",
   guideMessage: "이번 기억의 흔적은\n새우젓에 관한 기록 속에 남아 있어.\n\n전시관에 도착하면\n다시 이야기하지.",
   storyLabel: "네 번째 이야기",
-  incidentVideoUrl: "",
   incidentDialogues: [
     "이번에는 이름이 사라졌군.\n\n기록도 남아 있고,\n특징도 기억하고 있어.\n\n그런데 그걸 무엇이라 불렀는지만\n사라진 모양이야.",
     "다행히 이번 장소에는\n새우젓에 관한 기록이 많이 남아 있어.\n\n사라진 이름을 찾는 데\n도움이 될 거야.",
@@ -205,7 +200,7 @@ const exhibition: RestorableMission = {
   additionalHint: "새우를 잡은 시기와\n각각의 이름을 비교해보게.\n\n미션북에 남은 기록과 맞는 것이\n하나 있을 거야.",
   successMessage: "이름의 기억을 복원했습니다.",
   memoryAvailable: true,
-  memoryVideoUrl: "",
+  videoUrl: "https://youtu.be/g_tfFK-xGVw",
   memoryTitle: "이름의 기록",
   memoryRecordFactLabel: "유월에 잡은 새우로 담근 젓",
   memoryRecordFactValue: "육젓",
@@ -229,7 +224,6 @@ const ongamPort: RestorableMission = {
   shortDescription: "옛 옹암포구가 있던 곳으로 이동하세요.",
   guideMessage: "마지막 기억의 흔적은\n조금 특별한 곳에 남아 있어.\n\n지금은 예전 모습을\n찾을 수 없는 장소거든.\n\n그곳에 도착하면\n다시 이야기하지.",
   storyLabel: "마지막 이야기",
-  incidentVideoUrl: "",
   incidentDialogues: [
     "이번에는 장소 자체를\n잊은 게 아니야.\n\n옹암포구가 이곳에 있었다는 것도,\n광천과 바다를 이어주던 곳이었다는 것도\n기억하고 있어.",
     "그런데 하나가 사라졌군.\n\n이 포구의 시간이\n언제 멈췄는지.\n\n장소가 사라지면\n그 마지막 순간도 함께 잊히기 쉬운 법이지.",
@@ -249,7 +243,7 @@ const ongamPort: RestorableMission = {
   successMessage: "마지막 시간의 기억을 복원했습니다.",
   recordButtonLabel: "마지막 기록 확인하기",
   memoryAvailable: true,
-  memoryVideoUrl: "",
+  videoUrl: "",
   recordPrompt: "이곳에 남아 있던\n마지막 기록을 확인해보게.",
   memoryTitle: "마지막 시간의 기록",
   memoryRecordFactLabel: "옹암포구의 마지막 시간",

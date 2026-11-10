@@ -3,15 +3,14 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CheonggwangCard } from "../../../components/cheonggwang-scene";
+import RestoredRecordVideo from "../../../components/restored-record-video";
 import type { RestorableMission } from "../../../data/missions";
-import { getCompletedMissions, reviewedRecordKey, solvedMissionKey } from "../../../lib/mission-progress";
+import { completeMission, getCompletedMissions, reviewedRecordKey, solvedMissionKey } from "../../../lib/mission-progress";
 
 export default function StoryRecordScreen({ mission }: { mission: RestorableMission }) {
   const router = useRouter();
   const [allowed, setAllowed] = useState(false);
-  const [videoEnded, setVideoEnded] = useState(false);
   const [storageError, setStorageError] = useState(false);
-  const videoUrl = mission.memoryVideoUrl?.trim();
 
   useEffect(() => {
     try {
@@ -29,6 +28,7 @@ export default function StoryRecordScreen({ mission }: { mission: RestorableMiss
   function confirmRecord() {
     try {
       window.sessionStorage.setItem(reviewedRecordKey(mission.id), "true");
+      completeMission(mission.id);
       router.push(`/mission/${mission.id}/memory`);
     } catch {
       setStorageError(true);
@@ -53,21 +53,13 @@ export default function StoryRecordScreen({ mission }: { mission: RestorableMiss
             <CheonggwangCard dialogue={mission.memoryMessage + "\n\n" + (mission.recordPrompt ?? "복원된 기록을 확인해보게.")} />
             <div className="w-full rounded-lg border border-[#c9ad83] bg-[#fff8e9]/85 p-4 shadow-[0_8px_24px_rgba(74,48,34,0.08)]">
               <p className="mb-3 text-xs font-bold tracking-[0.16em] text-[#9a6740]">복원된 기록 {String(mission.number).padStart(2, "0")}</p>
-              {videoUrl ? (
-                <video src={videoUrl} controls preload="metadata" playsInline onEnded={() => setVideoEnded(true)} className="aspect-video w-full bg-[#4a3022]">
-                  브라우저에서 영상을 재생할 수 없습니다.
-                </video>
-              ) : (
-                <div className="flex aspect-video items-center justify-center border border-dashed border-[#b59670] bg-[#f0e0c1]/70 px-4 text-center font-story text-lg font-bold text-[#765a44]">
-                  복원된 기록 영상 준비 중
-                </div>
-              )}
+              <RestoredRecordVideo videoUrl={mission.videoUrl} title={`${mission.storyLabel} 복원된 기록 영상`} />
             </div>
           </section>
 
           <div className="pb-[max(1.75rem,env(safe-area-inset-bottom))]">
-            <button type="button" onClick={confirmRecord} disabled={Boolean(videoUrl) && !videoEnded}
-              className="flex min-h-16 w-full items-center justify-center rounded-2xl border border-[#4b2d1d] bg-[#593823] px-6 text-lg font-semibold text-[#fff8e9] shadow-[0_7px_0_#d1b792] disabled:cursor-not-allowed disabled:opacity-50">
+            <button type="button" onClick={confirmRecord}
+              className="flex min-h-16 w-full items-center justify-center rounded-2xl border border-[#4b2d1d] bg-[#593823] px-6 text-lg font-semibold text-[#fff8e9] shadow-[0_7px_0_#d1b792]">
               기록 확인 완료
             </button>
           </div>
